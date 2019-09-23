@@ -1,21 +1,27 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-int main(void)
+# include<iostream>
+#include<stdlib.h>
+using namespace std;
+# include<cmath>
+int main()
 {
-	float a = 0, b = 0, c = 0, p = 0;
-	float area = 0;
-	printf("Please input three sides of triangle:");
-	scanf_s("%f %f %f", &a, &b, &c);
-	if ((a + b) > c && (a + c) > b && (b + c) > a)
+	int a, b, c;
+	float delta, x1, x2;
+	cout << "请输入a,b,c的值:" << endl;
+	cin >> a >> b >> c;
+	delta = b * b - 4 * a*c;
+	if (delta < 0)
+		cout << "方程无根" << endl;
+	else if (delta == 0)
 	{
-		p = (a + b + c) / 2;
-		area = sqrt(p * (p - a) * (p - b) * (p - c));
+		x1 = -b / (2 * a);
+		cout << "方程的根为" << x1 << endl;
 	}
 	else
-		printf("Triangle does not exist！\n");
-	printf("The area of triangle is:%f\n", area);
+	{
+		x1 = (-b + sqrt(delta)) / (2 * a);
+		x2 = (-b - sqrt(delta)) / (2 * a);
+		cout << "方程的根为" << x1 << "和" << x2 << endl;
+	}
 	system("pause");
-
 	return 0;
 }
